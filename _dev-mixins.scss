@@ -35,12 +35,14 @@
 }
 @mixin absolute($sides: null null null null) {
   position: absolute;
+
   $exact-size: (
           top: nth($sides, 1),
           right: nth($sides, 2),
           bottom: nth($sides, 3),
           left: nth($sides, 4)
   );
+
   @each $side, $value in $exact-size {
     @if is-length($value) {
       #{$side}: $value;
@@ -392,6 +394,19 @@ $a-transition-long: .5s;
   transition: $value $transition;
 }
 
-div {
-  @include size(100%);
 }
+
+@mixin object-fit($fit: cover) {
+  object-fit: $fit;
+  object-position: center;
+}
+
+// remove fouc for slick
+@mixin remove-fouc {
+  visibility: hidden;
+
+  &.slick-initialized {
+    visibility: visible;
+  }
+}
+
