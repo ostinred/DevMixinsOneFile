@@ -394,8 +394,6 @@ $a-transition-long: .5s;
   transition: $value $transition;
 }
 
-}
-
 @mixin object-fit($fit: cover) {
   object-fit: $fit;
   object-position: center;
