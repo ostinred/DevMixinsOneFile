@@ -7,7 +7,7 @@ $desktop-hd:    1900px !default;
 $desktop-2k:    2400px !default;
 
 @mixin mobile {
-  @media screen and (min-width: #{#mobile}) {
+  @media screen and (min-width: #{$mobile}) {
     @content;
   }
 }
@@ -54,13 +54,6 @@ $desktop-2k:    2400px !default;
   }
 }
 
-// landscape
-@mixin landscape {
-  @media screen and and (min-device-width : 768px) and (max-device-width : 1024px)  and (orientation: landscape) {
-    @content;
-  }
-}
-
 // iphone 3, 3gs, 4, 4s
 @mixin iphone-xs{
   @media screen and (device-aspect-ratio: 2/3) {
@@ -102,15 +95,19 @@ $desktop-2k:    2400px !default;
   }
 }
 
+// iPadlandscape
+@mixin ipad-landscape {
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  and (orientation: landscape) {
+    @content;
+  }
+}
+
 // Retina display
 @mixin retina {
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     @content;
   }
 }
-
-///////
-
 
 @function contains($list, $values...) {
   @each $value in $values {
@@ -348,7 +345,6 @@ $desktop-2k:    2400px !default;
   object-position: center;
 }
 
-// remove fouc for slick
 @mixin remove-FOUC {
   visibility: hidden;
 
@@ -358,6 +354,15 @@ $desktop-2k:    2400px !default;
 }
 // @include remove-FOUC;
 
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+//@include flex-center;
 
-
-
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+//@include flex-column;
